@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<button id="theme-toggle">
+  <div id="icon-theme-light">
+    <Icon name="theme/sun" class="w-8" /><span class="sr-only"
+      >Use light theme</span
+    >
+  </div>
+  <div id="icon-theme-dark">
+    <Icon name="theme/moon" class="w-8" /><span class="sr-only"
+      >Use dark theme</span
+    >
+  </div>
+</button>
+
+<script is:inline>
+  const themes = ["light", "dark"];
+  const button = document.querySelector("#theme-toggle");
+
+  const getThemeCurrent = () =>
+    document.documentElement.classList.contains("dark") ? "dark" : "light";
+
+  const getThemeNext = () => {
+    const themeCurrent = getThemeCurrent();
+    const indexThemeCurrent = themes.indexOf(themeCurrent);
+    return themes[(indexThemeCurrent + 1) % themes.length];
+  };
+
+  const updateIcon = () => {
+    const themeCurrent = getThemeCurrent();
+    const themeNext = getThemeNext();
+    document
+      .querySelector(`#icon-theme-${themeCurrent}`)
+      .classList.add("hidden");
+    document
+      .querySelector(`#icon-theme-${themeNext}`)
+      .classList.remove("hidden");
+  };
+
+  button.addEventListener("click", () => {
+    const themeCurrent = getThemeCurrent();
+    const themeNext = getThemeNext();
+    document.documentElement.classList.remove(themeCurrent);
+    document.documentElement.classList.add(themeNext);
+    localStorage.setItem("theme", themeNext);
+    updateIcon();
+  });
+
+  updateIcon();
+</script>
