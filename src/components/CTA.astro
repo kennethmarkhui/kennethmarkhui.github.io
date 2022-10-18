@@ -1,0 +1,13 @@
+---
+import Links from "./Links.astro";
+
+const name = import.meta.env.PUBLIC_NAME;
+---
+
+<section
+  class="h-screen m-auto flex flex-col items-center justify-center gap-4"
+>
+  <h1 class="text-5xl text-center font-bold">Hello, I'm {name}</h1>
+  <p>I'm a Web Developer</p>
+  <Links />
+</section>

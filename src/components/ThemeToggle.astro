@@ -1,18 +1,29 @@
 ---
 import { Icon } from "astro-icon";
+
+export interface Theme {
+  mode: "light" | "dark";
+  icon: string;
+}
+
+const themes: Theme[] = [
+  { mode: "light", icon: "theme/sun" },
+  { mode: "dark", icon: "theme/moon" },
+];
 ---
 
 <button id="theme-toggle">
-  <div id="icon-theme-light">
-    <Icon name="theme/sun" class="w-8" /><span class="sr-only"
-      >Use light theme</span
-    >
-  </div>
-  <div id="icon-theme-dark">
-    <Icon name="theme/moon" class="w-8" /><span class="sr-only"
-      >Use dark theme</span
-    >
-  </div>
+  {
+    themes.map((theme) => (
+      <div id={`icon-theme-${theme.mode}`}>
+        <Icon
+          name={theme.icon}
+          class="w-8 hover:text-nord10 dark:hover:text-nord7 duration-300"
+        />
+        <span class="sr-only">{`Use ${theme.mode} theme`}</span>
+      </div>
+    ))
+  }
 </button>
 
 <script is:inline>

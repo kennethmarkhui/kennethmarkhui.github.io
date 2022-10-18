@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Link {
+  to: string;
+  icon: string;
+}
+
+const links: Link[] = [
+  { to: import.meta.env.PUBLIC_GITHUB_URL, icon: "github" },
+];
+---
+
+<ul class="flex gap-4">
+  {
+    links.map(({ icon, to }) => (
+      <li>
+        <a href={to} rel="noreferrer" target="_blank">
+          <Icon
+            name={icon}
+            class="w-8 hover:text-nord10 dark:hover:text-nord7 duration-300"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
