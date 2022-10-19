@@ -2,12 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import CTA from "../components/CTA.astro";
+import Projects from "../components/Projects.astro";
 ---
 
 <Layout title="Kenneth Mark Hui">
   <main class="m-auto max-w-prose w-full px-6 sm:px-0">
     <CTA />
-    <section class="h-screen flex flex-col items-center justify-center">
+    <hr class="border-nord3 opacity-30" />
+    <Projects />
+    <hr class="border-nord3 opacity-30" />
+    <section class="min-h-screen flex flex-col items-center justify-center">
       <h1 class="text-5xl font-extrabold m-0">
         Welcome to <span class="text-nord10 dark:text-nord7">Astro</span>
       </h1>
