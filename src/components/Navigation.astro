@@ -1,0 +1,25 @@
+---
+export interface NavigationLink {
+  name: string;
+  url: string;
+}
+
+const navigationLinks: NavigationLink[] = [
+  { name: "Projects", url: "#projects" },
+];
+---
+
+<ul>
+  {
+    navigationLinks.map((navigationLink) => (
+      <li>
+        <a
+          href={navigationLink.url}
+          class="hover:text-nord10 dark:hover:text-nord7 duration-300"
+        >
+          {navigationLink.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>
