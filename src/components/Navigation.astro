@@ -6,10 +6,11 @@ export interface NavigationLink {
 
 const navigationLinks: NavigationLink[] = [
   { name: "Projects", url: "#projects" },
+  { name: "Resume", url: "#resume" },
 ];
 ---
 
-<ul>
+<ul class="flex gap-4">
   {
     navigationLinks.map((navigationLink) => (
       <li>

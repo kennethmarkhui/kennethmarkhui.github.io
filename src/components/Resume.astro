@@ -1,0 +1,31 @@
+---
+import Icon from "astro-icon";
+---
+
+<section
+  id="resume"
+  aria-label="Resume"
+  class="flex flex-col gap-8 py-12 sm:py-16"
+>
+  <div>
+    <h2 class="text-2xl font-bold">Resume</h2>
+    <p class="text-nord3 dark:text-nord4">
+      You can view my resume directly through GDrive.
+    </p>
+  </div>
+  <div class="flex justify-center">
+    <a
+      href="https://drive.google.com/file/d/1b6W2rCWZL2jz5ZkPSVDdkMpQDYSfzlte/view?usp=sharing"
+      rel="noreferrer noopener"
+      target="_blank"
+      class="flex gap-4 items-center border rounded py-2 px-4 border-nord0 dark:border-nord6 hover:text-nord10 hover:border-nord10 dark:hover:text-nord7 dark:hover:border-nord7 duration-300"
+      ><Icon name="gdrive" class="w-6" /><span>View on GDrive</span>
+    </a>
+  </div>
+  <div class="rounded overflow-hidden">
+    <iframe
+      title="resume embed"
+      src="https://drive.google.com/file/d/1b6W2rCWZL2jz5ZkPSVDdkMpQDYSfzlte/preview"
+      class="h-96 sm:h-[50rem] w-full"></iframe>
+  </div>
+</section>
