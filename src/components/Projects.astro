@@ -10,6 +10,13 @@ export interface Project {
   repositoryUrls: string[];
 }
 
+export interface Technology {
+  id: string;
+  name: string;
+  icon: string;
+  url: string;
+}
+
 const projects: Project[] = [
   {
     title: "Website with Gallery",
@@ -44,6 +51,21 @@ const projects: Project[] = [
     ],
   },
 ];
+
+const technologies: Technology[] = [
+  {
+    id: "typescript",
+    name: "Typescript",
+    icon: "simple-icons:typescript",
+    url: "https://www.typescriptlang.org/",
+  },
+  {
+    id: "javascript",
+    name: "JavaScript",
+    icon: "simple-icons:javascript",
+    url: "https://www.javascript.com/",
+  },
+];
 ---
 
 <section
@@ -62,7 +84,22 @@ const projects: Project[] = [
     {
       projects.map((project) => (
         <div class="sm:flex items-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <div class="w-full sm:w-1/3 flex justify-center">img here</div>
+          <div class="w-full sm:w-1/3 flex justify-center">
+            {!project.image
+              ? technologies
+                  .filter(
+                    (t) =>
+                      t.id ===
+                      project.tags[0]
+                        .trim()
+                        .toLowerCase()
+                        .replace(/[^a-zA-Z0-9 ]/g, "")
+                  )
+                  .map((tech) => (
+                    <Icon name={tech.icon} class="h-24 rounded" />
+                  ))[0]
+              : "img here"}
+          </div>
           <div class="w-full text-center sm:w-2/3 sm:text-left space-y-4">
             <h3 class="flex flex-wrap items-center justify-center space-x-2 text-xl sm:justify-start">
               <span>{project.title}</span>
